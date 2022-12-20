@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string m, n;
+char n;
 
 int main()
 {
@@ -9,9 +9,7 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    cin >> m >> n;
+    cin >> n;
 
-    // cout << (int)(m / n) << '\n';
-
-    // cout << m % n << '\n';
+    cout << (int)n << '\n';
 }

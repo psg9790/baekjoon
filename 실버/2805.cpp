@@ -6,6 +6,17 @@ vector<int> woods;
 int mini = 0;
 int maxi = 0;
 
+long long cutwoods(int h)
+{
+    long long ret = 0;
+    for (int i = 0; i < woods.size(); i++)
+    {
+        int collectw = woods[i] - h;
+        ret += (collectw > 0 ? collectw : 0);
+    }
+    return ret;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(0);
@@ -25,53 +36,26 @@ int main()
         }
     }
 
-    int sum_w;
-    int half;
-    while (true)
+    int res;
+    while (mini <= maxi)
     {
-        sum_w = 0;
-        // cout << mini << ' ' << half << ' ' << maxi << '\n';
-        half = (int)((maxi + mini) / 2);
-        // n개 나무에 대해 자른 나무 합
-        for (int i = 0; i < n; i++)
+        int half = (int)((maxi + mini) / 2);
+
+        long long sum_w = cutwoods(half);
+
+        if (sum_w < m)
         {
-            int calc = woods[i] - half;
-            sum_w += calc > 0 ? calc : 0;
-            // 나무합이 m보다 크면 mini=half+1
+            // 나무를 더 캐야 하므로
+            maxi = half - 1;
         }
-        if (mini == maxi)
+        else
         {
-            break;
-        }
-        if (sum_w == m)
-        {
-            break;
+            // 나무를 덜 캐야 하므로
+            res = half;
+            mini = half + 1;
         }
 
-        if (sum_w > m)
-        {
-            if (half + 1 > maxi)
-            {
-                mini = maxi;
-            }
-            else
-            {
-                mini = half;
-            }
-        }
-        // 나무합이 m보다 작으면 maxi=half-1
-        else if (sum_w < m)
-        {
-            if (half - 1 < mini)
-            {
-                maxi = mini;
-            }
-            else
-            {
-                maxi = half - 1;
-            }
-        }
-        // 나무합 일치하면 탈출
+        // cout << "half: " << half << " next min: " << mini << " next maxi: " << maxi << '\n';
     }
-    cout << half << '\n';
+    cout << res << '\n';
 }
