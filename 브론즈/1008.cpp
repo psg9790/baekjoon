@@ -1,9 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
-int a, b;
+
+double a, b;
+
 int main()
 {
     cin >> a >> b;
-    float ret = ((float)a / b);
+
+    double ret = a / b;
+
+    cout.precision(20);
+
     cout << ret << '\n';
 }

@@ -1,7 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string m, n;
+string a, b;
+int cnt = 0;
+int lastIdx = 1000;
+int arr[1000] = {
+    0,
+};
 
 int main()
 {
@@ -9,9 +14,7 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    cin >> m >> n;
+    cin >> a >> b;
 
-    // cout << (int)(m / n) << '\n';
-
-    // cout << m % n << '\n';
+    cout << cnt << '\n';
 }
